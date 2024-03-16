@@ -18,6 +18,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  font-family: 'DRUK', sans-serif;
+  font-family: 'UNBOUNDED', sans-serif;
+  font-family: 'GOLOS', sans-serif;
   background: linear-gradient(
       to bottom,
       transparent,
