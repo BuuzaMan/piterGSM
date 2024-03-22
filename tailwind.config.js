@@ -22,7 +22,9 @@ module.exports = {
       fontFamily: {
         druk: "var(--font-druk)",
         unbounded: "var(--font-unbounded)",
-        golos: "var(--font-golos)"
+        golos: "var(--font-golos)",
+        oswald: "var(--font-oswald)",
+        sf: "var(--font-sf)"
       }
     },
   },
