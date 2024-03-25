@@ -58,6 +58,41 @@ const sf = localfont({
     }
   ],
   variable: '--font-sf'
+});
+const sf_text = localfont({
+  src: [
+    {
+      path: '../../public/fonts/SFProText-Light.ttf',
+      weight: '300',
+      style: 'light'
+    },
+    {
+      path: '../../public/fonts/SFProText-Regular.ttf',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../../public/fonts/SFProText-Medium.ttf',
+      weight: '500',
+      style: 'medium'
+    },
+    {
+      path: '../../public/fonts/SFProText-Semibold.ttf',
+      weight: '600',
+      style: 'semibold'
+    },
+    {
+      path: '../../public/fonts/SFProText-Bold.ttf',
+      weight: '700',
+      style: 'bold'
+    },
+    {
+      path: '../../public/fonts/SFProText-Heavy.ttf',
+      weight: '800',
+      style: 'extrabold'
+    }
+  ],
+  variable: '--font-sf_text'
 })
 
 const golos = Golos_Text ({
@@ -89,7 +124,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${druk.variable} ${golos.variable} ${unbounded.variable} ${oswald.variable} ${sf.variable}`}>{children}</body>
+      <body className={`${druk.variable} ${golos.variable} ${unbounded.variable} ${oswald.variable} ${sf.variable} ${sf_text.variable}`}>{children}</body>
     </html>
   );
 }

@@ -24,7 +24,8 @@ module.exports = {
         unbounded: "var(--font-unbounded)",
         golos: "var(--font-golos)",
         oswald: "var(--font-oswald)",
-        sf: "var(--font-sf)"
+        sf: "var(--font-sf)",
+        sf_text: "var(--font-sf_text)"
       }
     },
   },

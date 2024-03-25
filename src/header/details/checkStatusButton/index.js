@@ -5,7 +5,7 @@ import { Link } from 'react-scroll';
 const CheckStatusButton = () => {
   return (
     <Link to="checkStatus" spy={true} smooth={true} offset={-50} duration={500}>
-      <button className='w-[287px] h-[53px] rounded-[8px] border-[1px] border-[#0D0D0D] font-druk text-[10px] font-medium tracking-[.07em] uppercase z-10'>проверить статус ремонта</button>
+      <button className='w-[287px] h-[53px] rounded-[8px] border-[1px] border-[#0D0D0D] font-sf_text text-[13px] font-bold tracking-[.07em] uppercase z-10'>проверить статус ремонта</button>
     </Link>
   )
 }
