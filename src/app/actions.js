@@ -63,8 +63,8 @@ export async function getOrder(id) {
       throw new Error(response.statusCode, response.name, response.message);
     }
 
-    const data = await response.json();
-    const order = data.data[0]
+    let data = await response.json();
+    let order = data.data[0]
     if (!order)
       return {}
     const status = STATUSES[order.status.type] 

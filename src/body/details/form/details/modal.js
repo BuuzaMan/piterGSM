@@ -6,7 +6,7 @@ function ModalWindow({ open, onClose }) {
   return (
 
     <div className="flex fixed bg-black bg-opacity-30 items-center w-full h-full inset-0 justify-center z-40">
-      <div className='bg-gradient-to-r from-[#97C61D] to-[#20C79F] desktopxl:w-[900px] desktopxl:h-[430px] desktopmd:w-[900px] desktopmd:h-[420px] desktopsm:w-[900px] desktopsm:h-[420px] tablet:w-[900px] tablet:h-[410px] tabletsm:w-[900px] tabletsm:h-[410px] mobilexl:w-[600px] mobilexl:h-[410px] mobilemd:w-[400px] mobilemd:h-[430px] mobilesm:w-[300px] mobilesm:h-[440px] bg-white rounded-[16px]'>
+      <div className='bg-gradient-to-r from-[#2E83C2] to-[#70BB44] desktopxl:w-[900px] desktopxl:h-[430px] desktopmd:w-[900px] desktopmd:h-[420px] desktopsm:w-[900px] desktopsm:h-[420px] tablet:w-[900px] tablet:h-[410px] tabletsm:w-[900px] tabletsm:h-[410px] mobilexl:w-[600px] mobilexl:h-[410px] mobilemd:w-[400px] mobilemd:h-[430px] mobilesm:w-[300px] mobilesm:h-[440px] bg-white rounded-[16px]'>
         <div className='flex flex-col mt-[20px] desktopxl:ml-[40px] desktopmd:ml-[40px] desktopsm:ml-[40px] tablet:ml-[40px] tabletsm:ml-[40px] mobilexl:ml-[20px] mobilemd:ml-[20px] mobilesm:ml-[10px] relative'> 
             <WhiteLogo />
             <div className='font-sf font-bold desktopxl:text-[60px] desktopmd:text-[60px] desktopsm:text-[60px] tablet:text-[60px] tabletsm:text-[60px] mobilexl:text-[60px] mobilemd:text-[48px] mobilesm:text-[40px] desktopxl:mt-[0px] desktopmd:mt-[0px] desktopsm:mt-[0px] tablet:mt-[0px] tabletsm:mt-[0px] mobilexl:mt-[0px] mobilemd:mt-[20px] mobilesm:mt-[50px] text-white text-center'>Спасибо</div>
