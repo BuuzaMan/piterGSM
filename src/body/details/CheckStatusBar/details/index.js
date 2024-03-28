@@ -1,11 +1,12 @@
 "use client"
 import { getOrder } from '@/app/actions';
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import Modal from './modal';
+import InputMask from 'react-input-mask';
 
 const CheckInput = () => {
-  const { register, handleSubmit, formState:{errors}, reset } = useForm({ mode:'onBlur' });
+  const { register, handleSubmit, formState:{errors}, reset, control } = useForm({ mode:'all' });
   const [isOpen, setIsOpen] = useState(false);
   const [orderStatus, setOrderStatus] = useState(null);
   
@@ -21,26 +22,32 @@ const CheckInput = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex desktopxl:flex-row desktopmd:flex-row desktopsm:flex-row tablet:flex-row tabletsm:flex-row mobilexl:flex-col mobilemd:flex-col mobilesm:flex-col desktopxl:w-[1759px] desktopxl:h-[99px] relative mt-[10px]'>
       <label className='flex desktopxl:flex-row desktopmd:flex-row desktopsm:flex-row tablet:flex-row tabletsm:flex-row mobilexl:flex-col mobilemd:flex-col mobilesm:flex-col desktopxl:w-[1319px]'>
-        <input 
-            type='text'
-            {...register('number',
-            {required: "Поле обязательно для заполнения",
-             pattern: {
-               value: /^[A-Z]\d{6}$/,
-               message: 'Пожалуйста, введите ваш номер квитанции в формате A000000'
-             },
-             minLength: {
+        <Controller
+          name='number'
+          control={control}
+          defaultValue=""
+          rules={{
+            required: "Поле обязательно для заполнения",
+            pattern: {
+              value: /^[A-Z]\d{6}$/,
+              message: 'Пожалуйста, введите шесть цифр после символа А'
+            },
+            minLength: {
               value: 7,
               message: 'Минимальное количество символов 7'
-             },
-             maxLength: {
-              value: 7,
-              message: 'Превышено допустимое количество символов'
-             }
-            })}
-            className='desktopxl:w-[1319px] desktopmd:w-[959px] desktopsm:w-[834px] tablet:w-[674px] tabletsm:w-[498px] mobilexl:w-[688px] mobilemd:w-[400px] mobilesm:w-[320px] desktopxl:h-[99px] desktopmd:h-[99px] desktopsm:h-[99px] tablet:h-[99px] tabletsm:h-[99px] mobilexl:h-[99px] mobilemd:h-[68px] mobilesm:h-[52px] rounded-[8px] bg-[#F6F6F6] placeholder:font-sf placeholder:font-bold desktopxl:placeholder:text-[36px] desktopmd:placeholder:text-[36px] desktopsm:placeholder:text-[36px] tablet:placeholder:text-[36px] tabletsm:placeholder:text-[36px] mobilexl:placeholder:text-[36px] mobilemd:placeholder:text-[36px] mobilesm:placeholder:text-[15px] placeholder:text-[#B4B4B4] placeholder:leading-[1.13rem] placeholder:tracking-[.015em] desktopxl:pl-[36px] desktopmd:pl-[36px] desktopsm:pl-[36px] tablet:pl-[36px] tabletsm:pl-[36px] mobilexl:pl-[36px] mobilemd:pl-[36px] mobilesm:pl-[20px] outline-none desktopxl:text-[32px] desktopmd:text-[32px] desktopsm:text-[32px] tablet:text-[32px] tabletsm:text-[32px] mobilexl:text-[32px] mobilemd:text-[32px] mobilesm:text-[13px] font-sf font-bold'
-            placeholder='A000000' >
-        </input> 
+            }
+          }}
+          render={({ field }) => (
+            <InputMask
+              mask="A999999"
+              maskChar={null}
+              type='text'
+              {...field}
+              className='desktopxl:w-[1319px] desktopmd:w-[959px] desktopsm:w-[834px] tablet:w-[674px] tabletsm:w-[498px] mobilexl:w-[688px] mobilemd:w-[400px] mobilesm:w-[320px] desktopxl:h-[99px] desktopmd:h-[99px] desktopsm:h-[99px] tablet:h-[99px] tabletsm:h-[99px] mobilexl:h-[99px] mobilemd:h-[68px] mobilesm:h-[52px] rounded-[8px] bg-[#F6F6F6] placeholder:font-sf placeholder:font-bold desktopxl:placeholder:text-[36px] desktopmd:placeholder:text-[36px] desktopsm:placeholder:text-[36px] tablet:placeholder:text-[36px] tabletsm:placeholder:text-[36px] mobilexl:placeholder:text-[36px] mobilemd:placeholder:text-[36px] mobilesm:placeholder:text-[15px] placeholder:text-[#B4B4B4] placeholder:leading-[1.13rem] placeholder:tracking-[.015em] desktopxl:pl-[36px] desktopmd:pl-[36px] desktopsm:pl-[36px] tablet:pl-[36px] tabletsm:pl-[36px] mobilexl:pl-[36px] mobilemd:pl-[36px] mobilesm:pl-[20px] outline-none desktopxl:text-[36px] desktopmd:text-[36px] desktopsm:text-[36px] tablet:text-[36px] tabletsm:text-[36px] mobilexl:text-[36px] mobilemd:text-[36px] mobilesm:text-[15px] font-sf font-bold'
+              placeholder='A000000' 
+            />
+          )}
+        />       
       </label>
       <button 
         type='submit'

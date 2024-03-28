@@ -1,6 +1,6 @@
 import { sendForm } from '@/app/actions'
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import getServiceString from './serviceString';
 import InputMask from 'react-input-mask';
 import ModalWindow from './modal';
@@ -10,7 +10,8 @@ const Input = ({ serviceChooseState }) => {
     register, 
     handleSubmit, 
     formState:{errors},
-    reset
+    reset,
+    control
   } = useForm( {mode: 'onBlur'});
 
   const [isOpen, setIsOpen] = useState(false);
@@ -29,30 +30,38 @@ const Input = ({ serviceChooseState }) => {
           Ваши имя и фамилия
           <span className='text-orange-500'>*</span>
           <input 
-              type='text'
-              {...register('name', 
-              {required: "Поле обязательно для заполнения"})}
-              className='mb-[22px] shadow-lg desktopxl:w-[703px] desktopmd:w-[703px] desktopsm:w-[620px] tablet:w-[540px] tabletsm:w-[452px] mobilexl:w-[688px] mobilemd:w-[440px] mobilesm:w-[320px] desktopxl:h-[68px] desktopmd:h-[68px] desktopsm:h-[68px] tablet:h-[68px] tabletsm:h-[68px] mobilexl:h-[68px] mobilemd:h-[68px] mobilesm:h-[52px] rounded-[8px] border-[1px] border-[#E1E1E1] bg-white mt-[6px] placeholder:font-sf_text placeholder:font-medium placeholder:text-[16px] placeholder:text-[#BFBFBF] placeholder:leading-[1.5rem] placeholder:tracking-[.015em] pl-[24px] outline-none'
-              placeholder='Александр Александров' >
+            type='text'
+            {...register('name', 
+            {required: "Поле обязательно для заполнения"})}
+            className='mb-[22px] shadow-lg desktopxl:w-[703px] desktopmd:w-[703px] desktopsm:w-[620px] tablet:w-[540px] tabletsm:w-[452px] mobilexl:w-[688px] mobilemd:w-[440px] mobilesm:w-[320px] desktopxl:h-[68px] desktopmd:h-[68px] desktopsm:h-[68px] tablet:h-[68px] tabletsm:h-[68px] mobilexl:h-[68px] mobilemd:h-[68px] mobilesm:h-[52px] rounded-[8px] border-[1px] border-[#E1E1E1] bg-white mt-[6px] placeholder:font-sf_text placeholder:font-medium placeholder:text-[16px] placeholder:text-[#BFBFBF] placeholder:leading-[1.5rem] placeholder:tracking-[.015em] pl-[24px] outline-none'
+            placeholder='Александр Александров' >
           </input>
         </label>
         <div className='absolute desktopxl:top-[100px] desktopmd:top-[100px] desktopsm:top-[100px] tablet:top-[100px] tabletsm:top-[100px] mobilexl:top-[100px] mobilemd:top-[100px] mobilesm:top-[85px] font-sf_text text-red-400 text-[12px] tracking-[.001em] z-10'>{errors?.name && <p>{errors?.name?.message}</p>}</div>
         <label className='desktopxl:mt-[22px] desktopmd:mt-[22px] desktopsm:mt-[22px] tablet:mt-[22px] tabletsm:mt-[22px] mobilexl:mt-[22px] mobilemd:mt-[22px] mobilesm:mt-[16px] font-sf_text font-medium leading-[1.5rem] -tracking-[.015em] desktopxl:text-[16px] desktopmd:text-[16px] desktopsm:text-[16px] tablet:text-[16px] tabletsm:text-[16px] mobilexl:text-[16px] mobilemd:text-[16px] mobilesm:text-[13px]'>
           Ваш телефон
           <span className='text-orange-500'>*</span>
-          <InputMask 
-              mask="+7(999)999-99-99"
-              maskChar={null}
-              type='tel'
-              {...register('phone',
-              {required: "Поле обязательно для заполнения",
-               minLength: {
+          <Controller
+            name='phone'
+            control={control}
+            defaultValue=''
+            rules={{
+              required: 'Поле обязательно для заполнения',
+              minLength: {
                 value: 16,
-                message: 'Минимальное количество символов 12'
-               }
-              })}
-              className='mb-[22px] shadow-lg desktopxl:w-[703px] desktopmd:w-[703px] desktopsm:w-[620px] tablet:w-[540px] tabletsm:w-[452px] mobilexl:w-[688px] mobilemd:w-[440px] mobilesm:w-[320px] desktopxl:h-[68px] desktopmd:h-[68px] desktopsm:h-[68px] tablet:h-[68px] tabletsm:h-[68px] mobilexl:h-[68px] mobilemd:h-[68px] mobilesm:h-[52px] rounded-[8px] border-[1px] border-[#E1E1E1] bg-white mt-[6px] placeholder:font-sf_text font-sf_text placeholder:font-medium placeholder:text-[16px] placeholder:text-[#BFBFBF] placeholder:leading-[1.5rem] placeholder:tracking-[.015em] pl-[24px] outline-none'
-              placeholder='+7(9**)***-**-**'
+                message: 'Минимальное количество символов 12',
+              }
+            }}
+            render={({ field }) => (
+              <InputMask
+                mask='+7(999)999-99-99'
+                maskChar={null}
+                type='tel'
+                {...field}
+                className='mb-[22px] shadow-lg desktopxl:w-[703px] desktopmd:w-[703px] desktopsm:w-[620px] tablet:w-[540px] tabletsm:w-[452px] mobilexl:w-[688px] mobilemd:w-[440px] mobilesm:w-[320px] desktopxl:h-[68px] desktopmd:h-[68px] desktopsm:h-[68px] tablet:h-[68px] tabletsm:h-[68px] mobilexl:h-[68px] mobilemd:h-[68px] mobilesm:h-[52px] rounded-[8px] border-[1px] border-[#E1E1E1] bg-white mt-[6px] placeholder:font-sf_text font-sf_text placeholder:font-medium placeholder:text-[16px] placeholder:text-[#BFBFBF] placeholder:leading-[1.5rem] placeholder:tracking-[.015em] pl-[24px] outline-none'
+                placeholder='+7(9**)***-**-**'
+              />
+            )}
           />
         </label>
         <div className='absolute desktopxl:top-[222px] desktopmd:top-[222px] desktopsm:top-[222px] tabletsm:top-[222px] tablet:top-[222px] mobilexl:top-[222px] mobilemd:top-[222px] mobilesm:top-[195px] font-sf_text text-red-400 text-[12px] tracking-[.001em] z-10'>{errors?.phone && <p>{errors?.phone?.message}</p>}</div>
