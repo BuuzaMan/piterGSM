@@ -6,7 +6,7 @@ import React from 'react'
 
 const Messengers = () => {
     const handleWhatsapp = () => {
-        window.open('https://api.whatsapp.com/message/AQC4UZPSQSCAO1?autoload=1&app_absent=0', '_blank')
+        window.open('https://wa.me/message/AQC4UZPSQSCAO1', '_blank')
     };
     const handleTelegram = () => {
         window.open('https://t.me/pitergsmchat', '_blank')
